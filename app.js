@@ -8,8 +8,10 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+var bluebird = require('bluebird')
 var mongoose = require('mongoose')
 
+mongoose.Promise = bluebird
 mongoose.connect('mongodb://127.0.0.1:27017/todoapp', { useMongoClient: true})
 .then(()=> { console.log('Succesfully connected to the MongoDB Database')})
 .catch(()=> { console.log('Failed to connect to the MongoDB Database')})
